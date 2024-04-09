@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react";
 import "./App.css";
-const hostname = import.meta.env.HOSTNAME || "http://localhost:3456";
-const token = import.meta.env.TOKEN || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hY3Rpdml0eSI6IjJlYTkyMzc1NWMiLCJpZF9wcm9qZWN0Ijo0LCJpZF9jcmVhdG9yIjoiMyJ9.vjcBL-2tfsxSA9cYU3ftkNKbH_XR9XoXH1mbCKkpPu0";
+const hostname = import.meta.env.VITE_HOSTNAME || "http://localhost:3456/";
+const token = import.meta.env.VITE_TOKEN || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hY3Rpdml0eSI6IjJlYTkyMzc1NWMiLCJpZF9wcm9qZWN0Ijo0LCJpZF9jcmVhdG9yIjoiMyJ9.vjcBL-2tfsxSA9cYU3ftkNKbH_XR9XoXH1mbCKkpPu0";
 // const url = "https://dev.d31tbalsqujwg0.amplifyapp.com/";
 
 function App() {
@@ -101,7 +101,7 @@ function App() {
         <iframe
           style={{ width:"100%", height:"100%", backgroundColor:"green", border:"none"}}
           id="videoFrame"
-          src={`${hostname}/watch?token=${token}`}
+          src={`${hostname}watch?token=${token}`}
           title="Video"
           onScroll={"none"}
           ></iframe>
