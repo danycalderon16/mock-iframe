@@ -6,6 +6,9 @@ const token = import.meta.env.VITE_TOKEN || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ
 // const url = "https://dev.d31tbalsqujwg0.amplifyapp.com/";
 
 function App() {
+
+  console.log(`${hostname}watch?token=${token}`);
+
   const handleClickWatch = (pathname = "/") => {
     const windowFeatures =
       "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no";
@@ -41,9 +44,6 @@ function App() {
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-
-  console.log({width, height});
 
   const openPopup = () => {
     setIsOpen(true);
