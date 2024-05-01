@@ -1,13 +1,14 @@
-
 import { useEffect, useState } from "react";
 import "./App.css";
 const hostname = import.meta.env.VITE_HOSTNAME || "http://localhost:3456/";
-const token = import.meta.env.VITE_TOKEN || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hY3Rpdml0eSI6ImZjNTU1NThmLTgyZDctNGVkYS1hNmZmLWUwOTFiNWJkZGRlMCIsImlkX3Byb2plY3QiOiIxNCIsImlkX2NyZWF0b3IiOiIxOTk5In0.VqTDZArkyn1GGsig3HeiJTn9iXAd5MQfyP8enaOufxQ";
+const token =
+  import.meta.env.VITE_TOKEN ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hY3Rpdml0eSI6ImZjNTU1NThmLTgyZDctNGVkYS1hNmZmLWUwOTFiNWJkZGRlMCIsImlkX3Byb2plY3QiOiIxNCIsImlkX2NyZWF0b3IiOiIxOTk5In0.VqTDZArkyn1GGsig3HeiJTn9iXAd5MQfyP8enaOufxQ";
 // const url = "https://dev.d31tbalsqujwg0.amplifyapp.com/";
 
 function App() {
-
-  console.log(`${hostname}watch?token=${token}`);
+  const url = `${hostname}watch?token=${token}`;
+  console.log(url);
 
   const handleClickWatch = (pathname = "/") => {
     const windowFeatures =
@@ -37,8 +38,8 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setWidth(window.innerWidth-70);
-      setHeight(((window.innerWidth-70)*(9/16)));
+      setWidth(window.innerWidth - 70);
+      setHeight((window.innerWidth - 70) * (9 / 16));
     };
     window.addEventListener("resize", handleResize);
     handleResize();
@@ -96,18 +97,36 @@ function App() {
       <button onClick={toggleSize}>
         {isLarge ? "Reducir tamaño" : "Ampliar tamaño"}
       </button> */}
-      <div style={{ width:(width), height:(height+80), overflow:"hidden", border:"1px solid black"}}>
-        
+      <div
+        style={{
+          width: width,
+          height: height + 80,
+          overflow: "hidden",
+          border: "1px solid black",
+        }}
+      >
         <iframe
-          style={{ width:"100%", height:"100%", backgroundColor:"green", border:"none"}}
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "green",
+            border: "none",
+          }}
           id="videoFrame"
           src={`${hostname}watch?token=${token}`}
           title="Video"
           onScroll={"none"}
-          ></iframe>
-          </div>
+        ></iframe>
+      </div>
 
-        <div style={{marginTop:120}}><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus repellendus, repellat iusto quis perspiciatis cumque quisquam consectetur, sint voluptas magnam officia accusamus earum inventore ut in autem reprehenderit natus laudantium7.</p></div>
+      <div style={{ marginTop: 120 }}>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+          repellendus, repellat iusto quis perspiciatis cumque quisquam
+          consectetur, sint voluptas magnam officia accusamus earum inventore ut
+          in autem reprehenderit natus laudantium7.
+        </p>
+      </div>
     </div>
   );
 }
