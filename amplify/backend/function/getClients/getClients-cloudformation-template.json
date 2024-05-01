@@ -80,13 +80,13 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "apiyoutubeclientLambdaRole1ecbaaa5",
+                        "apiyoutubeclientLambdaRolee53092ec",
                         {
 
                             "Fn::Join": [
                                 "",
                                 [
-                                    "apiyoutubeclientLambdaRole1ecbaaa5",
+                                    "apiyoutubeclientLambdaRolee53092ec",
                                     "-",
                                     {
                                         "Ref": "env"

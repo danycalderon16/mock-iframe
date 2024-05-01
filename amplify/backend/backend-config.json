@@ -1,6 +1,6 @@
 {
   "api": {
-    "clientes": {
+    "clients": {
       "dependsOn": [
         {
           "attributes": [
