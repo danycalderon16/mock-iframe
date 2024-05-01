@@ -13,7 +13,13 @@
     },
     "categories": {
       "function": {
-        "getClients": {}
+        "getClients": {
+          "deploymentBucketName": "amplify-amplifyc15d0648e9d74-staging-d84e1-deployment",
+          "s3Key": "amplify-builds/getClients-317153524d6a756e4970-build.zip"
+        }
+      },
+      "api": {
+        "clients": {}
       }
     }
   }
