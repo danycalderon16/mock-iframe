@@ -1,40 +1,37 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Form } from "./form";
+import { Iframe } from "./iframe";
 const hostname = import.meta.env.VITE_HOSTNAME || "http://localhost:3456/";
-const token =
-  import.meta.env.VITE_TOKEN ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hY3Rpdml0eSI6ImZjNTU1NThmLTgyZDctNGVkYS1hNmZmLWUwOTFiNWJkZGRlMCIsImlkX3Byb2plY3QiOiIxNCIsImlkX2NyZWF0b3IiOiIxOTk5In0.VqTDZArkyn1GGsig3HeiJTn9iXAd5MQfyP8enaOufxQ";
-// const url = "https://dev.d31tbalsqujwg0.amplifyapp.com/";
+// const token =
+//   import.meta.env.VITE_TOKEN ||
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoiMTk5OSIsImlkX2FjdGl2aWRhZCI6ImZjNTU1NThmLTgyZDctNGVkYS1hNmZmLWUwOTFiNWJkZGRlMCJ9.Dydyv8qQbHywFCwMXKyuRIYT6_ZwlcZhQ5NwkRfw6Es";
+// // const url = "https://dev.d31tbalsqujwg0.amplifyapp.com/";
 
 function App() {
-  const url = `${hostname}watch?token=${token}`;
-  console.log(url);
+ const [token, setToken] = useState("");
+ const [video,setVideo] = useState(false)
 
   const handleClickWatch = (pathname = "/") => {
+    const screenWidth = Math.round(window.screen.width * 0.9);
+    const screenHeight = Math.round(window.screen.height * 0.9);
     const windowFeatures =
       "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no";
-    const screenWidth = 600;
-    const screenHeight = 400;
-    const windowOptions = `width=${screenWidth}, height=${screenHeight}, top=0, left=0`;
+    const windowOptions = `width=${screenWidth}, height=${screenHeight}, top=${(window.screen.height - screenHeight) / 2}, left=${(window.screen.width - screenWidth) / 2}`;
 
-    const newWindow = window.open(
+    window.open(
       hostname + pathname + "?token=" + token,
       "_blank",
       `${windowFeatures}, ${windowOptions}`
     );
 
-    // // Genera la etiqueta embed con la URL del contenido multimedia
     // const embedCode = `<embed src="${url}" width="${screenWidth}" height="${screenHeight}" />`;
 
-    // // Escribe la etiqueta embed en la ventana emergente
     // newWindow.document.write(embedCode);
   };
-  const handleClickCreate = () => {};
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,87 +43,30 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const openPopup = () => {
-    setIsOpen(true);
-  };
-
-  const closePopup = () => {
-    setIsOpen(false);
-  };
-  const [isLarge, setIsLarge] = useState(false);
-
-  const toggleSize = () => {
-    setIsLarge(!isLarge);
-  };
-
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <button
-        style={{ margin: "1rem", background: "#111", color: "#fff" }}
-        onClick={() => handleClickWatch("/create")}
-      >
-        crear video
-      </button>
-      <button
-        style={{ margin: "1rem", background: "#111", color: "#fff" }}
-        onClick={() => handleClickWatch("/activities")}
-      >
-        listar actividades
-      </button>
-      <button
-        style={{ margin: "1rem", background: "#111", color: "#fff" }}
-        onClick={() => handleClickWatch("/watch")}
-      >
-        ver video
-      </button>
-      {/*   <button
-        style={{ margin: "1rem", background: "#111", color: "#fff" }}
-        onClick={openPopup}
-      >
-        Crear
-      </button>
-      <button onClick={toggleSize}>
-        {isLarge ? "Reducir tamaño" : "Ampliar tamaño"}
-      </button> */}
-      <div
-        style={{
-          width: width,
-          height: height + 80,
-          overflow: "hidden",
-          border: "1px solid black",
-        }}
-      >
-        <iframe
-          style={{
-            width: "100%",
-            height: "100%",
-            backgroundColor: "green",
-            border: "none",
-          }}
-          id="videoFrame"
-          src={`${hostname}watch?token=${token}`}
-          title="Video"
-          onScroll={"none"}
-        ></iframe>
+    <div className="flex flex-col justify-center w-full items-center mb-10">
+      <div className="h-auto w-full overflow-hidden">
+  <p className="w-full break-words">Token de ejemplo: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoiMTk5OSIsImlkX2FjdGl2aWRhZCI6ImZjNTU1NThmLTgyZDctNGVkYS1hNmZmLWUwOTFiNWJkZGRlMCJ9.Dydyv8qQbHywFCwMXKyuRIYT6_ZwlcZhQ5NwkRfw6Es</p>
       </div>
-
-      <div style={{ marginTop: 120 }}>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-          repellendus, repellat iusto quis perspiciatis cumque quisquam
-          consectetur, sint voluptas magnam officia accusamus earum inventore ut
-          in autem reprehenderit natus laudantium7.
-        </p>
+  <Form token={token} setToken={setToken}/>
+      <div className="flex justify-center gap-3">
+        <button className="bg-gray-950 text-white"
+          onClick={() => handleClickWatch("/create")}
+        >
+          crear video
+        </button>
+        <button className="bg-gray-950 text-white"
+          onClick={() => handleClickWatch("/activities")}
+        >
+          listar actividades
+        </button>
+        <button className="bg-gray-950 text-white"
+          onClick={() => setVideo(prev => !prev)}
+        >
+          {video ? "Cerrar video" : "Ver video"}
+        </button>
       </div>
+       <Iframe width={width} height={height} token={token} video={video}/>
     </div>
   );
 }
