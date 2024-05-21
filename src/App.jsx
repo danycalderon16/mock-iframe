@@ -3,10 +3,6 @@ import "./App.css";
 import { Form } from "./form";
 import { Iframe } from "./iframe";
 const hostname = import.meta.env.VITE_HOSTNAME || "http://localhost:3456/";
-// const token =
-//   import.meta.env.VITE_TOKEN ||
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoiMTk5OSIsImlkX2FjdGl2aWRhZCI6ImZjNTU1NThmLTgyZDctNGVkYS1hNmZmLWUwOTFiNWJkZGRlMCJ9.Dydyv8qQbHywFCwMXKyuRIYT6_ZwlcZhQ5NwkRfw6Es";
-// // const url = "https://dev.d31tbalsqujwg0.amplifyapp.com/";
 
 function App() {
  const [token, setToken] = useState("");
@@ -25,13 +21,12 @@ function App() {
       `${windowFeatures}, ${windowOptions}`
     );
 
-    // const embedCode = `<embed src="${url}" width="${screenWidth}" height="${screenHeight}" />`;
-
-    // newWindow.document.write(embedCode);
   };
 
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -65,6 +60,7 @@ function App() {
         >
           {video ? "Cerrar video" : "Ver video"}
         </button>
+        <button onClick={()=>window.close()}>Cerrar</button>
       </div>
        <Iframe width={width} height={height} token={token} video={video}/>
     </div>
