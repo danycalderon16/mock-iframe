@@ -18,7 +18,7 @@ function App() {
       (window.screen.height - screenHeight) / 2
     }, left=${(window.screen.width - screenWidth) / 2}`;
 
-    const op = window.open(
+    ventanaSecundaria.current = window.open(
       hostname + pathname + "?token=" + token,
       "_blank",
       `${windowFeatures}, ${windowOptions}`
