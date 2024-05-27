@@ -86,13 +86,13 @@ function App() {
         </button>
         <button
           className="bg-gray-950 text-white"
-          onClick={() => handleClickWatch("/create")}
+          onClick={() => handleClickWatch("create")}
         >
           crear video
         </button>
         <button
           className="bg-gray-950 text-white"
-          onClick={() => handleClickWatch("/activities")}
+          onClick={() => handleClickWatch("activities")}
         >
           listar actividades
         </button>
